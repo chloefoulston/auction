@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * A simple model of an auction.
  * The auction maintains a list of lots of arbitrary length.
@@ -13,6 +13,7 @@ public class Auction
     private ArrayList<Lot> listOfLots;
     // The number that will be given to the next lot entered into this auction.
     private int nextLotNumber;
+    
 
     /**
      * Create a new auction.
@@ -99,5 +100,30 @@ public class Auction
             return null;
         }
     }
-}
+    public void closeAuction()
+    {   
+        for(Lot lot : listOfLots) {
+            Bid highestBid = lot.getHighestBid();
+            if (highestBid != null){
+                System.out.println("Lot" + lot.getNumber() + ":" +lot.getDescription());
+                System.out.println("Sold to:" + highestBid.getBidder().getName());
+                System.out.println("Winning bid: $" + highestBid.getValue());
+                } 
+            else{
+                System.out.println("Lot" + lot.getNumber() + ":" + lot.getDescription());
+                System.out.println("No bids received.");
+            }
+    }
+    } 
+    public ArrayList<Lot> getUnsold() {
+    ArrayList<Lot> unsoldLots = new ArrayList<>();
+    for (Lot lot : listOfLots) {
+        if (lot != null && lot.getHighestBid() == null) {
+            unsoldLots.add(lot);
+        }
+    }
+    return unsoldLots;
+    }
+} 
+
 
