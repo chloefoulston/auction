@@ -118,7 +118,7 @@ public class Auction
     public ArrayList<Lot> getUnsold() {
     ArrayList<Lot> unsoldLots = new ArrayList<>();
     for (Lot lot : listOfLots) {
-        if (lot != null && lot.getHighestBid() == null) {
+        if (lot.getHighestBid() == null) {
             unsoldLots.add(lot);
         }
     }
