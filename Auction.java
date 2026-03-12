@@ -115,6 +115,25 @@ public class Auction
     }
     return unsoldLots;
     }
+    /**
+     * Remove the lot with the given lot number.
+     * @param number The number of the lot to be removed.
+     * @return The Lot with the given number, or null if
+     * there is no such lot.
+     */
+    public Lot removeLot(int number)
+    {
+        Iterator<Lot> it = listOfLots.iterator();
+        while(it.hasNext()){
+            Lot l = it.next();
+            int lotNumber = l.getNumber();
+            if (lotNumber == number){
+                it.remove();
+                
+            }
+        }
+        return null;
+    }
 } 
 
 
